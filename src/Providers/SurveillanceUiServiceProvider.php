@@ -18,6 +18,7 @@ class SurveillanceUiServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->registerRoutes();
+        $this->loadTranslationsFrom(realpath(__DIR__.'/../../resources/lang'), 'surveillance-ui');
         $this->loadViewsFrom(realpath(__DIR__ . '/../../resources/views'), 'surveillance-ui');
 
         if ($this->app->runningInConsole()) {

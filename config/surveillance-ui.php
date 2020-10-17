@@ -4,7 +4,7 @@ return [
     /**
      * The prefix to be used in the surveillance ui routes
      */
-    "prefix" => "surveillance",
+    "prefix" => "surveillance/ui",
 
     /**
      * The middleware(s) to be used in the surveillance ui routes
