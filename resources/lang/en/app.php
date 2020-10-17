@@ -6,13 +6,16 @@ $app = [
         'github' => 'https://github.com/neelkanthk/laravel-surveillance'
     ],
     'dashboard' => [
-        'title' => 'Dashboard'
+        'sidebar_title' => 'Dashboard',
+        'page_heading' => 'Surveillance Dashboard'
     ],
     'manager' => [
-        'title' => 'Manager'
+        'sidebar_title' => 'Manager',
+        'page_heading' => 'Surveillance Manager'
     ],
     'logs' => [
-        'title' => 'Logs'
+        'sidebar_title' => 'Logs',
+        'page_heading' => 'Surveillance Logs'
     ]
 ];
 

@@ -1,6 +1,6 @@
 @extends('surveillance-ui::layouts.master')
 
-@section('title', __('surveillance-ui::app.dashboard.title'))
+@section('title', __('surveillance-ui::app.dashboard.sidebar_title'))
 
 @section('sidebar')
     @parent
@@ -11,7 +11,7 @@
 
 <!-- Page Heading -->
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-    <h1 class="h3 mb-0 text-gray-800">{{ __('surveillance-ui::app.dashboard.title') }}</h1>
+    <h1 class="h3 mb-0 text-gray-800">{{ __('surveillance-ui::app.dashboard.page_heading') }}</h1>
 </div>
 
 <!-- Content Row -->

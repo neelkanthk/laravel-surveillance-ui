@@ -5,7 +5,7 @@ use Neelkanth\Laravel\SurveillanceUi\Http\Controllers\SurveillanceUiDashboardCon
 use Neelkanth\Laravel\SurveillanceUi\Http\Controllers\SurveillanceUiManagerController;
 use Neelkanth\Laravel\SurveillanceUi\Http\Controllers\SurveillanceUiLogsController;
 
-Route::get('/', [SurveillanceUiDashboardController::class, 'index'])->name('surveillance-ui.dashboard.index');
+Route::get('/dashboard', [SurveillanceUiDashboardController::class, 'index'])->name('surveillance-ui.dashboard.index');
 
 Route::get('/manager', [SurveillanceUiManagerController::class, 'index'])->name('surveillance-ui.manager.index');
 Route::get('/manager/create', [SurveillanceUiManagerController::class, 'create'])->name('surveillance-ui.manager.create');

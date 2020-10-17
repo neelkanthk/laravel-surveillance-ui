@@ -15,9 +15,9 @@
 
     <!-- Nav Item - Dashboard -->
     <li class="nav-item active">
-        <a class="nav-link" href="index.html">
+        <a class="nav-link" href="{{ route('surveillance-ui.dashboard.index') }}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>{{ __('surveillance-ui::app.dashboard.title') }}</span></a>
+            <span>{{ __('surveillance-ui::app.dashboard.sidebar_title') }}</span></a>
     </li>
 
     <!-- Divider -->
@@ -31,14 +31,14 @@
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
         <a class="nav-link" href="{{ route('surveillance-ui.manager.index') }}">
-            <i class="fas fa-fw fa-cog"></i>
-            <span>{{ __('surveillance-ui::app.manager.title') }}</span></a>
+            <i class="fas fa-fw fa-wrench"></i>
+            <span>{{ __('surveillance-ui::app.manager.sidebar_title') }}</span></a>
     </li>
 
     <li class="nav-item">
         <a class="nav-link" href="{{ route('surveillance-ui.logs.index') }}">
-            <i class="fas fa-fw fa-cog"></i>
-            <span>{{ __('surveillance-ui::app.logs.title') }}</span></a>
+            <i class="fas fa-fw fa-list-alt"></i>
+            <span>{{ __('surveillance-ui::app.logs.sidebar_title') }}</span></a>
     </li>
 
     <!-- Divider -->
