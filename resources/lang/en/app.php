@@ -2,8 +2,7 @@
 
 $app = [
     'common' => [
-        'title' => 'Surveillance',
-        'github' => 'https://github.com/neelkanthk/laravel-surveillance'
+        'title_prefix' => 'Surveillance'
     ],
     'dashboard' => [
         'sidebar_title' => 'Dashboard',

@@ -1,13 +1,13 @@
 @section('sidebar')
 
-<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+<ul class="navbar-nav bg-gradient-{{ config('surveillance-ui.sidebar_color') }} sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-        <div class="sidebar-brand-icon rotate-n-15">
-            <i class="fas fa-laugh-wink"></i>
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ route('surveillance-ui.dashboard.index') }}">
+        <div class="sidebar-brand-icon">
+            <img class="ml-2" width="50px" height="50px" src="{{ asset('surveillance-ui/images/logo.png') }}" />
         </div>
-        <div class="sidebar-brand-text mx-3">{{ __('surveillance-ui::app.common.title') }}<sup>UI</sup></div>
+        <div class="sidebar-brand-text mx-3">{!! config('surveillance-ui.package_name') !!}</div>
     </a>
 
     <!-- Divider -->
