@@ -14,7 +14,7 @@
     <hr class="sidebar-divider my-0">
 
     <!-- Nav Item - Dashboard -->
-    <li class="nav-item active">
+    <li class="nav-item {{ Route::is('surveillance-ui.dashboard.index') ? 'active' : '' }}">
         <a class="nav-link" href="{{ route('surveillance-ui.dashboard.index') }}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>{{ __('surveillance-ui::app.dashboard.sidebar_title') }}</span></a>
@@ -29,13 +29,13 @@
     </div>
 
     <!-- Nav Item - Pages Collapse Menu -->
-    <li class="nav-item">
+    <li class="nav-item {{ Route::is('surveillance-ui.manager.*') ? 'active' : '' }}">
         <a class="nav-link" href="{{ route('surveillance-ui.manager.index') }}">
             <i class="fas fa-fw fa-wrench"></i>
             <span>{{ __('surveillance-ui::app.manager.sidebar_title') }}</span></a>
     </li>
 
-    <li class="nav-item">
+    <li class="nav-item {{ Route::is('surveillance-ui.logs.*') ? 'active' : '' }}">
         <a class="nav-link" href="{{ route('surveillance-ui.logs.index') }}">
             <i class="fas fa-fw fa-list-alt"></i>
             <span>{{ __('surveillance-ui::app.logs.sidebar_title') }}</span></a>

@@ -24,7 +24,7 @@ class SurveillanceUiManagerController extends SurveillanceUiController
      */
     public function create()
     {
-        //
+        return view('surveillance-ui::manager.create');
     }
 
     /**
@@ -35,7 +35,7 @@ class SurveillanceUiManagerController extends SurveillanceUiController
      */
     public function store(Request $request)
     {
-        //
+        dd($request->all());
     }
 
     /**
@@ -57,7 +57,7 @@ class SurveillanceUiManagerController extends SurveillanceUiController
      */
     public function edit($id)
     {
-        //
+        return view('surveillance-ui::manager.edit');
     }
 
     /**
@@ -69,7 +69,7 @@ class SurveillanceUiManagerController extends SurveillanceUiController
      */
     public function update(Request $request, $id)
     {
-        //
+        dd($request->all());
     }
 
     /**
