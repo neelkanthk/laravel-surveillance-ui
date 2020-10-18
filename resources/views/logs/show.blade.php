@@ -36,7 +36,7 @@
             <div class="form-group">
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
-                        <label class="input-group-text" for="log_userid">{{ __('surveillance-ui::app.logs.fields.user_id') }}</label>
+                        <label class="input-group-text" for="log_userid">{{ __('surveillance-ui::app.logs.fields.userid') }}</label>
                     </div>
                     <input type="text" class="form-control" id="log_userid" placeholder="">
                 </div>

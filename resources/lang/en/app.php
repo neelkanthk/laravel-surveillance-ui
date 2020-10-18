@@ -39,7 +39,7 @@ $app = [
     ],
     'surveillance_types' => [
         'ip' => "IP Address",
-        'user_id' => "User ID",
+        'userid' => "User ID",
         'fingerprint' => "Browser Fingerprint"
     ],
     'surveillance_status' => [
@@ -57,7 +57,7 @@ $app = [
         'fields' => [
             'id' => "Log ID",
             'ip' => "IP Address",
-            'user_id' => "User ID",
+            'userid' => "User ID",
             'fingerprint' => "Browser Fingerprint",
             'url' => "Visited URL",
             'user_agent' => "User Agent",
@@ -68,7 +68,19 @@ $app = [
             'updated_at' => "Updated at"
         ]
     ],
-
+    'alerts' => [
+        'surveillance_already_enabled' => 'Surveillance already enabled',
+        'surveillance_enable_success' => 'Surveillance enabled',
+        'surveillance_enable_error' => 'Some error occured during enabling surveillance.',
+        'surveillance_disable_success' => 'Surveillance disabled',
+        'surveillance_disable_error' => 'Some error occured during disabling surveillance.',
+        'access_already_blocked' => 'Access already blocked',
+        'access_block_success' => 'Access blocked',
+        'access_block_error' => 'Some error occured during blocking access.',
+        'access_unblock_success' => 'Access unblocked',
+        'access_unblock_error' => 'Some error occured during unblocking access.',
+        'generic_error' => 'Some error occured.'
+    ]
 ];
 
 return $app;

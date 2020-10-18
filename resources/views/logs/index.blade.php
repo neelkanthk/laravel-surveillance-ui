@@ -10,6 +10,11 @@
 @push('view-scripts')
 <script src="{{ asset('surveillance-ui/js/datatable/jquery.dataTables.min.js') }}"></script>
 <script src="{{ asset('surveillance-ui/js/datatable/dataTables.bootstrap4.min.js') }}"></script>
+<script>
+    $(document).ready(function() {
+        $('#logs_listing').DataTable({});
+    });
+</script>
 @endpush
 
 @section('sidebar')
@@ -38,7 +43,7 @@
                                 <tr>
                                     <th>{{ __('surveillance-ui::app.logs.fields.id') }}</th>
                                     <th>{{ __('surveillance-ui::app.logs.fields.fingerprint') }}</th>
-                                    <th>{{ __('surveillance-ui::app.logs.fields.user_id') }}</th>
+                                    <th>{{ __('surveillance-ui::app.logs.fields.userid') }}</th>
                                     <th>{{ __('surveillance-ui::app.logs.fields.ip') }}</th>
                                     <th>{{ __('surveillance-ui::app.logs.fields.url') }}</th>
                                     <th>{{ __('surveillance-ui::app.logs.fields.created_at') }}</th>
@@ -69,7 +74,7 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                <td>1</td>
+                                    <td>1</td>
                                     <td>FDfdt345fgdfgdf</td>
                                     <td>3323</td>
                                     <td>127.0.0.1</td>

@@ -17,7 +17,7 @@
     <div class="row">
         <!-- Content Column -->
         <div class="col-lg-6 mb-4">
-            <form method="POST" action="{{ route('surveillance-ui.manager.update') }}">
+            <form id="surveillance-ui-edit-form" method="POST" action="{{ route('surveillance-ui.manager.update',2) }}">
                 @csrf
                 @method('PATCH')
                 <div class="form-group">
@@ -25,11 +25,11 @@
                         <div class="input-group-prepend">
                             <label class="input-group-text" for="type">{{ __('surveillance-ui::app.manager.fields.type') }}</label>
                         </div>
-                        <select class="custom-select" id="type">
-                            <option selected>{{ __('surveillance-ui::app.common.choose') }}</option>
-                            <option value="ip">{{ __('surveillance-ui::app.surveillance_types.ip') }}</option>
-                            <option value="user_id">{{ __('surveillance-ui::app.surveillance_types.user_id') }}</option>
-                            <option value="fingerprint">{{ __('surveillance-ui::app.surveillance_types.fingerprint') }}</option>
+                        <select class="custom-select" name="type" id="type">
+                            <option value="">{{ __('surveillance-ui::app.common.choose') }}</option>
+                            <option {{ $surveillanceRecord->type == 'ip' ? 'selected' : '' }} value="ip">{{ __('surveillance-ui::app.surveillance_types.ip') }}</option>
+                            <option {{ $surveillanceRecord->type == 'userid' ? 'selected' : '' }} value="userid">{{ __('surveillance-ui::app.surveillance_types.userid') }}</option>
+                            <option {{ $surveillanceRecord->type == 'fingerprint' ? 'selected' : '' }} value="fingerprint">{{ __('surveillance-ui::app.surveillance_types.fingerprint') }}</option>
                         </select>
                     </div>
                     @error('type')
@@ -41,34 +41,58 @@
                         <div class="input-group-prepend">
                             <label class="input-group-text" for="value">{{ __('surveillance-ui::app.manager.fields.value') }}</label>
                         </div>
-                        <input type="text" class="form-control" id="value" placeholder="">
+                        <input type="text" name="value" class="form-control" id="value" placeholder="" value="{{ $surveillanceRecord->value }}">
                     </div>
                     @error('value')
                     <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
                 </div>
                 <div class="form-group">
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <label class="input-group-text" for="action">{{ __('surveillance-ui::app.manager.fields.action') }}</label>
+                    <ul class="list-group list-group-flush alert alert-secondary mb-3">
+                        <div class="input-group-prepend ml-3">
+                            <label class="" for="status">{{ __('surveillance-ui::app.manager.fields.status') }}
+                                <sup class="text-danger"><i class="fa fa-asterisk" aria-hidden="true"></i></sup>
+                            </label>
                         </div>
-                        <select class="custom-select" id="action">
-                            <option selected>{{ __('surveillance-ui::app.common.choose') }}</option>
-                            <option value="enable">{{ __('surveillance-ui::app.surveillance_status.enable') }}</option>
-                            <option value="block">{{ __('surveillance-ui::app.surveillance_status.block') }}</option>
-                        </select>
-                    </div>
-                    @error('action')
-                    <div class="alert alert-danger">{{ $message }}</div>
-                    @enderror
+                        <li class="list-group-item ml-3">
+                            {{ __('surveillance-ui::app.surveillance_status.enable') }}
+                            <label class="checkbox">
+                                <input {{ !empty($surveillanceRecord->surveillance_enabled) ? 'checked' : '' }} id="enable" name="status[enable]" value="enable" type="radio" />
+                                <span class="default"></span>
+                            </label>
+                        </li>
+                        <li class="list-group-item ml-3">
+                            {{ __('surveillance-ui::app.surveillance_status.disable') }}
+                            <label class="checkbox">
+                                <input {{ empty($surveillanceRecord->surveillance_enabled) ? 'checked' : '' }} id="disable" name="status[disable]" value="disable" type="radio" />
+                                <span class="default"></span>
+                            </label>
+                        </li>
+                        <li class="list-group-item ml-3">
+                            {{ __('surveillance-ui::app.surveillance_status.block') }}
+                            <label class="checkbox">
+                                <input {{ !empty($surveillanceRecord->access_blocked) ? 'checked' : '' }} id="block" name="status[block]" value="block" type="radio" />
+                                <span class="default"></span>
+                            </label>
+                        </li>
+                        <li class="list-group-item ml-3">
+                            {{ __('surveillance-ui::app.surveillance_status.unblock') }}
+                            <label class="checkbox">
+                                <input {{ empty($surveillanceRecord->access_blocked) ? 'checked' : '' }} id="unblock" name="status[unblock]" value="unblock" type="radio" />
+                                <span class="default"></span>
+                            </label>
+                        </li>
+                        @error('status')
+                        <div class="text text-danger">{{ $message }}</div>
+                        @enderror
+                    </ul>
                 </div>
-                <a href="#" class="btn btn-success btn-icon-split">
+                <button type="submit" class="btn btn-success btn-icon-split">
                     <span class="icon text-white-50">
                         <i class="fas fa-check"></i>
                     </span>
                     <span class="text">{{ __('surveillance-ui::app.manager.update') }}</span>
-                </a>
-
+                </button>
                 <a href="{{ route('surveillance-ui.manager.index') }}" class="btn btn-warning btn-icon-split">
                     <span class="icon text-white-50">
                         <i class="fas fa-times"></i>

@@ -10,6 +10,11 @@
 @push('view-scripts')
 <script src="{{ asset('surveillance-ui/js/datatable/jquery.dataTables.min.js') }}"></script>
 <script src="{{ asset('surveillance-ui/js/datatable/dataTables.bootstrap4.min.js') }}"></script>
+<script>
+    $(document).ready(function() {
+        $('#manager_listing').DataTable({});
+    });
+</script>
 @endpush
 
 @section('sidebar')
@@ -49,7 +54,7 @@
                                 </tr>
                             </thead>
                             <tfoot>
-                            <tr>
+                                <tr>
                                     <th>{{ __('surveillance-ui::app.manager.fields.type') }}</th>
                                     <th>{{ __('surveillance-ui::app.manager.fields.value') }}</th>
                                     <th>{{ __('surveillance-ui::app.manager.fields.status') }}</th>
