@@ -15,6 +15,9 @@
     <!-- sbadmin styles for this template-->
     <link href="{{ asset('surveillance-ui/css/sb-admin-2.min.css') }}" rel="stylesheet">
 
+    <!-- view specific third party stylesheets -->
+    @stack('view-styles')
+
     <!-- custom styles for this template-->
     <link href="{{ asset('surveillance-ui/css/app.css') }}" rel="stylesheet">
 </head>
@@ -63,6 +66,9 @@
 
     <!-- sbadmin scripts for all pages-->
     <script src="{{ asset('surveillance-ui/js/sb-admin-2.min.js') }}"></script>
+
+    <!-- view specific third party scripts -->
+    @stack('view-scripts')
 
     <!-- custom scripts for all pages-->
     <script src="{{ asset('surveillance-ui/js/app.js') }}"></script>
