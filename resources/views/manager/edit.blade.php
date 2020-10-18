@@ -23,13 +23,10 @@
                 <div class="form-group">
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
-                            <label class="input-group-text" for="type">{{ __('surveillance-ui::app.manager.fields.type') }}</label>
+                            <label class="input-group-text" for="value">{{ __('surveillance-ui::app.manager.fields.type') }}</label>
                         </div>
-                        <select class="custom-select" name="type" id="type">
-                            <option value="">{{ __('surveillance-ui::app.common.choose') }}</option>
-                            <option {{ $surveillanceRecord->type == 'ip' ? 'selected' : '' }} value="ip">{{ __('surveillance-ui::app.surveillance_types.ip') }}</option>
-                            <option {{ $surveillanceRecord->type == 'userid' ? 'selected' : '' }} value="userid">{{ __('surveillance-ui::app.surveillance_types.userid') }}</option>
-                            <option {{ $surveillanceRecord->type == 'fingerprint' ? 'selected' : '' }} value="fingerprint">{{ __('surveillance-ui::app.surveillance_types.fingerprint') }}</option>
+                        <select name="type" class="custom-select" id="type">
+                            <option value="{{ $surveillanceRecord->type }}" selected><?php echo trans("surveillance-ui::app.surveillance_types.$surveillanceRecord->type") ?></option>
                         </select>
                     </div>
                     @error('type')
@@ -41,7 +38,7 @@
                         <div class="input-group-prepend">
                             <label class="input-group-text" for="value">{{ __('surveillance-ui::app.manager.fields.value') }}</label>
                         </div>
-                        <input type="text" name="value" class="form-control" id="value" placeholder="" value="{{ $surveillanceRecord->value }}">
+                        <input readonly type="text" name="value" class="form-control" id="value" placeholder="" value="{{ $surveillanceRecord->value }}">
                     </div>
                     @error('value')
                     <div class="alert alert-danger">{{ $message }}</div>

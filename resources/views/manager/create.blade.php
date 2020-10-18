@@ -37,10 +37,10 @@
                             </label>
                         </div>
                         <select name="type" class="custom-select" id="type">
-                            <option value="" selected>{{ __('surveillance-ui::app.common.choose') }}</option>
-                            <option value="ip">{{ __('surveillance-ui::app.surveillance_types.ip') }}</option>
-                            <option value="userid">{{ __('surveillance-ui::app.surveillance_types.userid') }}</option>
-                            <option value="fingerprint">{{ __('surveillance-ui::app.surveillance_types.fingerprint') }}</option>
+                            <option {{ old('type') == '' ? 'selected' : '' }}  value="" selected>{{ __('surveillance-ui::app.common.choose') }}</option>
+                            <option {{ old('type') == 'ip' ? 'selected' : '' }} value="ip">{{ __('surveillance-ui::app.surveillance_types.ip') }}</option>
+                            <option {{ old('type') == 'userid' ? 'selected' : '' }} value="userid">{{ __('surveillance-ui::app.surveillance_types.userid') }}</option>
+                            <option {{ old('type') == 'fingerprint' ? 'selected' : '' }} value="fingerprint">{{ __('surveillance-ui::app.surveillance_types.fingerprint') }}</option>
                         </select>
                     </div>
                     @error('type')
@@ -54,7 +54,7 @@
                                 <sup class="text-danger"><i class="fa fa-asterisk" aria-hidden="true"></i></sup>
                             </label>
                         </div>
-                        <input type="text" name="value" class="form-control" id="value" placeholder="" value="">
+                        <input type="text" name="value" class="form-control" id="value" placeholder="" value="{{ old('value') }}">
                     </div>
                     @error('value')
                     <div class="text text-danger">{{ $message }}</div>
