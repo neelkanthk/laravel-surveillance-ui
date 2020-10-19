@@ -12,31 +12,53 @@
 <script src="{{ asset('surveillance-ui/js/datatable/dataTables.bootstrap4.min.js') }}"></script>
 <script>
     $(document).ready(function() {
-        var manager_dt = $('#manager_listing').DataTable({
+        var surveillance_manager_dt = $('#manager_listing').DataTable({
             processing: true,
             serverSide: true,
+            orderable: false,
             language: {
                 zeroRecords: "No surveillance records to show."
             },
             ajax: {
                 url: "{{ route('surveillance-ui.manager.index') }}",
-                data: function(filters)
-                {
-                    filters.type = "";
-                    filters.status = "";
+                data: function(filters) {
+                    filters.type = $("#filter_surveillance_type").val();
+                    filters.status = $("#filter_surveillance_status").val();
                 }
             },
-            columns: [
-                {"data": "id"},
-                {"data": "type"},
-                {"data": "value"},
-                {"data": "status"},
-                {"data": "actions", orderable: false, searchable: false}
+            columns: [{
+                    "data": "id",
+                    orderable: false,
+                    searchable: false
+                },
+                {
+                    "data": "type",
+                    orderable: false,
+                    searchable: false
+                },
+                {
+                    "data": "value",
+                    orderable: false,
+                    searchable: false
+                },
+                {
+                    "data": "status",
+                    orderable: false,
+                    searchable: false
+                },
+                {
+                    "data": "actions",
+                    orderable: false,
+                    searchable: false
+                }
             ],
-            drawCallback: function(settings)
-            {
+            drawCallback: function(settings) {
                 $(window).scrollTop(0);
             }
+        });
+
+        $("#filter_surveillance_type, #filter_surveillance_status").change(function(e){
+            surveillance_manager_dt.ajax.reload();
         });
 
     });
@@ -52,7 +74,14 @@
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h5 mb-0 text-gray-800">{{ __('surveillance-ui::app.manager.page_heading') }}</h1>
+        <a href="{{ route('surveillance-ui.manager.create') }}" class="float-right btn btn-success btn-icon-split">
+        <span class="icon text-white-50">
+            <i class="fas fa-plus"></i>
+        </span>
+        <span class="text">{{ __('surveillance-ui::app.manager.create') }}</span>
+    </a>
     </div>
+    
 
     <!-- Content Row -->
     <div class="row">
@@ -60,13 +89,7 @@
         <div class="col-lg-12 mb-6">
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                    <span>Filters</span>
-                    <a href="{{ route('surveillance-ui.manager.create') }}" class="float-right btn btn-success btn-icon-split">
-                        <span class="icon text-white-50">
-                            <i class="fas fa-plus"></i>
-                        </span>
-                        <span class="text">{{ __('surveillance-ui::app.manager.create') }}</span>
-                    </a>
+                    @include('surveillance-ui::manager.filters')
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
@@ -90,7 +113,7 @@
                                 </tr>
                             </tfoot>
                             <tbody>
-                                
+
                             </tbody>
                         </table>
                     </div>
