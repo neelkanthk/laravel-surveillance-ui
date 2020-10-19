@@ -9,7 +9,11 @@
                 </button>
             </div>
             <div class="modal-footer">
-                <button class="btn btn-danger" type="button" data-dismiss="modal">{{ __('surveillance-ui::app.common.delete') }}</button>
+                <form id="delete-surveillance-manager-form" method="POST">
+                    @csrf
+                    @method('DELETE')
+                    <button class="btn btn-danger" type="button" onclick="submit()" data-dismiss="modal">{{ __('surveillance-ui::app.common.delete') }}</button>
+                </form>
             </div>
         </div>
     </div>

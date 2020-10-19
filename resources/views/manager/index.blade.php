@@ -57,8 +57,13 @@
             }
         });
 
-        $("#filter_surveillance_type, #filter_surveillance_status").change(function(e){
+        $("#filter_surveillance_type, #filter_surveillance_status").change(function(e) {
             surveillance_manager_dt.ajax.reload();
+        });
+
+        $('.deleteManagerModal').on('show.bs.modal', function(e) {
+            var invoker = $(e.relatedTarget);
+            $("#delete-surveillance-manager-form").attr('action', invoker.attr('data-url'));
         });
 
     });
@@ -74,14 +79,23 @@
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h5 mb-0 text-gray-800">{{ __('surveillance-ui::app.manager.page_heading') }}</h1>
+        @if(session()->has('flash_message'))
+        <div class="alert alert-info alert-dismissible fade show" role="alert">
+            <i class="fas fa-info-circle"></i>
+            {{ session()->get('flash_message') }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        @endif
         <a href="{{ route('surveillance-ui.manager.create') }}" class="float-right btn btn-success btn-icon-split">
-        <span class="icon text-white-50">
-            <i class="fas fa-plus"></i>
-        </span>
-        <span class="text">{{ __('surveillance-ui::app.manager.create') }}</span>
-    </a>
+            <span class="icon text-white-50">
+                <i class="fas fa-plus"></i>
+            </span>
+            <span class="text">{{ __('surveillance-ui::app.manager.create') }}</span>
+        </a>
     </div>
-    
+
 
     <!-- Content Row -->
     <div class="row">

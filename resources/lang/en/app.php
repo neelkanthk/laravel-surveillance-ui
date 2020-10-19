@@ -16,7 +16,7 @@ $app = [
         'page_heading' => 'Surveillance Dashboard'
     ],
     'manager' => [
-        'sidebar_title' => 'Manager',
+        'sidebar_title' => 'Surveillance Manager',
         'page_heading' => 'Surveillance Manager',
         'create' => 'Create New',
         'update' => 'Update Status',
@@ -49,7 +49,7 @@ $app = [
         'unblock' => "Unblocked Access"
     ],
     'logs' => [
-        'sidebar_title' => 'Logs',
+        'sidebar_title' => 'Surveillance Logs',
         'page_heading' => 'Surveillance Logs',
         'detail' => 'Detail',
         'cancel' => "Cancel",
@@ -79,6 +79,7 @@ $app = [
         'access_block_error' => 'Some error occured during blocking access.',
         'access_unblock_success' => 'Access unblocked',
         'access_unblock_error' => 'Some error occured during unblocking access.',
+        'record_delete_success' => "Surveillance record has been deleted.",
         'generic_error' => 'Some error occured.'
     ]
 ];

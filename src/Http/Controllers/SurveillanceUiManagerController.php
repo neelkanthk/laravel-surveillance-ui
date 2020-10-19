@@ -51,7 +51,7 @@ class SurveillanceUiManagerController extends SurveillanceUiController
         foreach ($records as $record) {
             array_push($data, [
                 "id" => $record["id"],
-                "type" => $record["type"],
+                "type" => trans("surveillance-ui::app.surveillance_types." . $record["type"]),
                 "value" => $record["value"],
                 "status" => view('surveillance-ui::manager.badges', ['surveillance' => $record])->render(),
                 "actions" => view('surveillance-ui::manager.actions', ['id' => $record["id"]])->render()
@@ -175,6 +175,8 @@ class SurveillanceUiManagerController extends SurveillanceUiController
      */
     public function destroy($id)
     {
-        //
+        Surveillance::manager()->removeRecordById($id);
+        request()->session()->flash('flash_message', __('surveillance-ui::app.alerts.record_delete_success'));
+        return redirect()->route('surveillance-ui.manager.index');
     }
 }
