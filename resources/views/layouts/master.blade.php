@@ -5,8 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <link rel="icon" href="{{ asset('surveillance-ui/images/favicon.ico') }}" type="image/x-icon">
     <title>{{ __('surveillance-ui::app.common.title_prefix') }} - @yield('title')</title>
     <!-- Custom fonts for this template-->
     <link href="{{ asset('surveillance-ui/css/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">

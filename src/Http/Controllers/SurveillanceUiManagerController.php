@@ -17,7 +17,47 @@ class SurveillanceUiManagerController extends SurveillanceUiController
      */
     public function index()
     {
-        return view('surveillance-ui::manager.index');
+        try {
+            if (request()->ajax()) {
+                $filters = request()->only("type", "status", "draw");
+                $filters["limit"] = request()->get("length");
+                $filters["search"] = request()->get("search");
+                $filters["search"] = $filters["search"]["value"];
+                $filters["page"] = request()->get("start") == 0 ? 1 : ((int) request()->get("start") / $filters["limit"]) + 1;
+                $records = Surveillance::manager()->getPaginatedAndFilteredRecords($filters);
+                if (!empty($records["data"])) {
+                    $data = $this->dataTableRows($records["data"]);
+                }
+                return [
+                    "draw" => $filters["draw"],
+                    "recordsFiltered" => $records["total"],
+                    "recordsTotal" => $records["total"],
+                    "data" => $data
+                ];
+                return response()->json($records);
+            } else {
+                return view('surveillance-ui::manager.index');
+            }
+        } catch (Exception $ex) {
+        }
+    }
+
+    /**
+     * Prepare data to be sent to DataTable
+     */
+    public function dataTableRows($records)
+    {
+        $data = array();
+        foreach ($records as $record) {
+            array_push($data, [
+                "id" => $record["id"],
+                "type" => $record["type"],
+                "value" => $record["value"],
+                "status" => view('surveillance-ui::manager.badges', ['surveillance' => $record])->render(),
+                "actions" => view('surveillance-ui::manager.actions', ['id' => $record["id"]])->render()
+            ]);
+        }
+        return $data;
     }
 
     /**
@@ -95,7 +135,7 @@ class SurveillanceUiManagerController extends SurveillanceUiController
             $type = $request->get("type");
             $value = $request->get("value");
             $status = $request->get("status");
-            
+
             if (in_array("enable", $status)) {
                 $surveillance = Surveillance::manager()->type($type)->value($value)->enableSurveillance();
                 if (!empty($surveillance->id)) {

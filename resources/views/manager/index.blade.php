@@ -12,7 +12,33 @@
 <script src="{{ asset('surveillance-ui/js/datatable/dataTables.bootstrap4.min.js') }}"></script>
 <script>
     $(document).ready(function() {
-        $('#manager_listing').DataTable({});
+        var manager_dt = $('#manager_listing').DataTable({
+            processing: true,
+            serverSide: true,
+            language: {
+                zeroRecords: "No surveillance records to show."
+            },
+            ajax: {
+                url: "{{ route('surveillance-ui.manager.index') }}",
+                data: function(filters)
+                {
+                    filters.type = "";
+                    filters.status = "";
+                }
+            },
+            columns: [
+                {"data": "id"},
+                {"data": "type"},
+                {"data": "value"},
+                {"data": "status"},
+                {"data": "actions", orderable: false, searchable: false}
+            ],
+            drawCallback: function(settings)
+            {
+                $(window).scrollTop(0);
+            }
+        });
+
     });
 </script>
 @endpush
@@ -47,6 +73,7 @@
                         <table class="text-center table table-bordered" id="manager_listing" width="100%" cellspacing="0">
                             <thead>
                                 <tr>
+                                    <th>{{ __('surveillance-ui::app.manager.fields.id') }}</th>
                                     <th>{{ __('surveillance-ui::app.manager.fields.type') }}</th>
                                     <th>{{ __('surveillance-ui::app.manager.fields.value') }}</th>
                                     <th>{{ __('surveillance-ui::app.manager.fields.status') }}</th>
@@ -55,6 +82,7 @@
                             </thead>
                             <tfoot>
                                 <tr>
+                                    <th>{{ __('surveillance-ui::app.manager.fields.id') }}</th>
                                     <th>{{ __('surveillance-ui::app.manager.fields.type') }}</th>
                                     <th>{{ __('surveillance-ui::app.manager.fields.value') }}</th>
                                     <th>{{ __('surveillance-ui::app.manager.fields.status') }}</th>
@@ -62,32 +90,7 @@
                                 </tr>
                             </tfoot>
                             <tbody>
-                                <tr>
-                                    <td>IP</td>
-                                    <td>127.0.0.1</td>
-                                    <td>
-                                        <span class="badge badge-secondary">{{ __('surveillance-ui::app.surveillance_status.enable') }}</span>
-                                        <span class="badge badge-info">{{ __('surveillance-ui::app.surveillance_status.block') }}</span>
-                                    </td>
-                                    <td>
-                                        <a title="{{ __('surveillance-ui::app.manager.detail') }}" href="#" class="btn btn-primary btn-sm" data-toggle="modal" data-target=".showManagerDetailModal"><i class="fa fa-eye"></i></a>
-                                        <a title="{{ __('surveillance-ui::app.manager.update') }}" href="#" class="btn btn-success btn-sm"><i class="fa fa-edit"></i></a>
-                                        <a title="{{ __('surveillance-ui::app.manager.delete') }}" href="#" class="btn btn-danger btn-sm" data-toggle="modal" data-target=".deleteManagerModal"><i class="fa fa-trash"></i></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>IP</td>
-                                    <td>192.0.0.1</td>
-                                    <td>
-                                        <span class="badge badge-secondary">{{ __('surveillance-ui::app.surveillance_status.enable') }}</span>
-                                        <span class="badge badge-info">{{ __('surveillance-ui::app.surveillance_status.block') }}</span>
-                                    </td>
-                                    <td>
-                                        <a title="{{ __('surveillance-ui::app.manager.detail') }}" href="#" class="btn btn-primary btn-sm" data-toggle="modal" data-target=".showManagerDetailModal"><i class="fa fa-eye"></i></a>
-                                        <a title="{{ __('surveillance-ui::app.manager.update') }}" href="#" class="btn btn-success btn-sm"><i class="fa fa-edit"></i></a>
-                                        <a title="{{ __('surveillance-ui::app.manager.delete') }}" href="#" class="btn btn-danger btn-sm" data-toggle="modal" data-target=".deleteManagerModal"><i class="fa fa-trash"></i></a>
-                                    </td>
-                                </tr>
+                                
                             </tbody>
                         </table>
                     </div>
