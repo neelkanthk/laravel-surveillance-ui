@@ -15,7 +15,7 @@ return [
     /**
      * Package Name
      */
-    "package_name" => 'Laravel Surveillance<sup>UI</sup>',
+    "app_name" => 'Laravel Surveillance<sup>UI</sup>',
 
     /**
      * Sidebar color bootstrap class

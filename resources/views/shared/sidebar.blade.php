@@ -7,18 +7,19 @@
         <div class="sidebar-brand-icon">
             <img class="ml-2" width="50px" height="50px" src="{{ asset('surveillance-ui/images/logo.png') }}" />
         </div>
-        <div class="sidebar-brand-text mx-3">{!! config('surveillance-ui.package_name') !!}</div>
+        <div class="sidebar-brand-text mx-3">{!! config('surveillance-ui.app_name') !!}</div>
     </a>
 
     <!-- Divider -->
     <hr class="sidebar-divider my-0">
 
     <!-- Nav Item - Dashboard -->
-    <li class="nav-item {{ Route::is('surveillance-ui.dashboard.index') ? 'active' : '' }}">
+    <!-- TODO -->
+    <!-- <li class="nav-item {{ Route::is('surveillance-ui.dashboard.index') ? 'active' : '' }}">
         <a class="nav-link" href="{{ route('surveillance-ui.dashboard.index') }}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>{{ __('surveillance-ui::app.dashboard.sidebar_title') }}</span></a>
-    </li>
+    </li> -->
 
     <!-- Divider -->
     <hr class="sidebar-divider">

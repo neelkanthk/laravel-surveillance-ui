@@ -14,7 +14,7 @@
             ajax: {
                 url: "{{ route('surveillance-ui.logs.index') }}",
                 data: function(filters) {
-                    filters.type = $("#filter_datetime_range").val();
+                    filters.datetime_range = $("#filter_datetime_range").val();
                 }
             },
             columns: [{
@@ -59,7 +59,12 @@
         });
 
         $('#filter_datetime_range').on('apply.daterangepicker', function(ev, picker) {
-            $(this).val(picker.startDate.format('YYYY-MM-DD HH:mm:ss') + ' - ' + picker.endDate.format('YYYY-MM-DD HH:mm:ss'));
+            $(this).val(picker.startDate.format('YYYY-MM-DD HH:mm:ss') + ' to ' + picker.endDate.format('YYYY-MM-DD HH:mm:ss'));
+            surveillance_logs_dt.ajax.reload();
+        });
+        
+        $('#filter_datetime_range').on('cancel.daterangepicker', function(ev, picker) {
+            $('#filter_datetime_range').val('');
             surveillance_logs_dt.ajax.reload();
         });
     });

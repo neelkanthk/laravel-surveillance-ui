@@ -18,10 +18,15 @@ class SurveillanceUiLogsController extends SurveillanceUiController
     {
         try {
             if (request()->ajax()) {
-                $filters = request()->only("draw");
+                $filters = request()->only("draw", "datetime_range");
                 $filters["limit"] = request()->get("length");
                 $filters["search"] = request()->get("search");
                 $filters["search"] = $filters["search"]["value"];
+                if (!empty($filters["datetime_range"])) {
+                    $range = explode("to", $filters["datetime_range"]);
+                    $filters["from_datetime"] = !empty(trim($range[0])) ? trim($range[0]) : null;
+                    $filters["to_datetime"] = !empty(trim($range[1])) ? trim($range[1]) : null;
+                }
                 $filters["page"] = request()->get("start") == 0 ? 1 : ((int) request()->get("start") / $filters["limit"]) + 1;
                 $logs = Surveillance::logger()->getPaginatedAndFilteredLogs($filters);
                 $data = array();

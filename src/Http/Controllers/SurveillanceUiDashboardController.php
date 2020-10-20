@@ -14,7 +14,7 @@ class SurveillanceUiDashboardController extends SurveillanceUiController
      */
     public function index()
     {
-        return view('surveillance-ui::dashboard.index');
+        return redirect()->route('surveillance-ui.manager.index');
     }
 
     /**
