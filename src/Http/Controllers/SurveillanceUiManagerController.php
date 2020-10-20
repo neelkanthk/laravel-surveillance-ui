@@ -36,7 +36,6 @@ class SurveillanceUiManagerController extends SurveillanceUiController
                     "recordsTotal" => Surveillance::manager()->totalRecords(),
                     "data" => $data
                 ];
-                return response()->json($records);
             } else {
                 return view('surveillance-ui::manager.index');
             }

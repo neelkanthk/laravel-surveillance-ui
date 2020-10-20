@@ -10,11 +10,7 @@
 @push('view-scripts')
 <script src="{{ asset('surveillance-ui/js/datatable/jquery.dataTables.min.js') }}"></script>
 <script src="{{ asset('surveillance-ui/js/datatable/dataTables.bootstrap4.min.js') }}"></script>
-<script>
-    $(document).ready(function() {
-        $('#logs_listing').DataTable({});
-    });
-</script>
+@include('surveillance-ui::logs.partials.datatable_scripts')
 @endpush
 
 @section('sidebar')
@@ -26,8 +22,8 @@
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h5 mb-0 text-gray-800">{{ __('surveillance-ui::app.logs.page_heading') }}</h1>
+        @include('surveillance-ui::logs.partials.flash_alert')
     </div>
-
     <!-- Content Row -->
     <div class="row">
         <!-- Content Column -->
@@ -42,9 +38,9 @@
                             <thead>
                                 <tr>
                                     <th>{{ __('surveillance-ui::app.logs.fields.id') }}</th>
-                                    <th>{{ __('surveillance-ui::app.logs.fields.fingerprint') }}</th>
-                                    <th>{{ __('surveillance-ui::app.logs.fields.userid') }}</th>
                                     <th>{{ __('surveillance-ui::app.logs.fields.ip') }}</th>
+                                    <th>{{ __('surveillance-ui::app.logs.fields.userid') }}</th>
+                                    <th>{{ __('surveillance-ui::app.logs.fields.fingerprint') }}</th>
                                     <th>{{ __('surveillance-ui::app.logs.fields.url') }}</th>
                                     <th>{{ __('surveillance-ui::app.logs.fields.created_at') }}</th>
                                     <th>{{ __('surveillance-ui::app.logs.actions') }}</th>
@@ -52,38 +48,17 @@
                             </thead>
                             <tfoot>
                                 <tr>
-                                    <th>ID</th>
-                                    <th>Fingerprint</th>
-                                    <th>User ID</th>
-                                    <th>IP Address</th>
-                                    <th>Visited URL</th>
-                                    <th>Timestamp</th>
-                                    <th>Actions</th>
+                                    <th>{{ __('surveillance-ui::app.logs.fields.id') }}</th>
+                                    <th>{{ __('surveillance-ui::app.logs.fields.ip') }}</th>
+                                    <th>{{ __('surveillance-ui::app.logs.fields.userid') }}</th>
+                                    <th>{{ __('surveillance-ui::app.logs.fields.fingerprint') }}</th>
+                                    <th>{{ __('surveillance-ui::app.logs.fields.url') }}</th>
+                                    <th>{{ __('surveillance-ui::app.logs.fields.created_at') }}</th>
+                                    <th>{{ __('surveillance-ui::app.logs.actions') }}</th>
                                 </tr>
                             </tfoot>
                             <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>FDfdt345fgdfgdf</td>
-                                    <td>3323</td>
-                                    <td>127.0.0.1</td>
-                                    <td>http://localhost:8000/surveillance/ui/logs</td>
-                                    <td>2020-10-14 01:09:07</td>
-                                    <td>
-                                        <a href="{{ route('surveillance-ui.logs.show',1) }}" class="btn btn-primary btn-sm">Complete Log</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>FDfdt345fgdfgdf</td>
-                                    <td>3323</td>
-                                    <td>127.0.0.1</td>
-                                    <td>http://localhost:8000/surveillance/ui/logs</td>
-                                    <td>2020-10-14 01:09:07</td>
-                                    <td>
-                                        <a href="{{ route('surveillance-ui.logs.show',2) }}" class="btn btn-primary btn-sm">Complete Log</a>
-                                    </td>
-                                </tr>
+
                             </tbody>
                         </table>
                     </div>

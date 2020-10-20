@@ -22,15 +22,7 @@
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h5 mb-0 text-gray-800">{{ __('surveillance-ui::app.manager.page_heading') }}</h1>
-        @if(session()->has('flash_message'))
-        <div class="alert alert-info alert-dismissible fade show" role="alert">
-            <i class="fas fa-info-circle"></i>
-            {{ session()->get('flash_message') }}
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-        @endif
+        @include('surveillance-ui::manager.partials.flash_alert')
         <a href="{{ route('surveillance-ui.manager.create') }}" class="float-right btn btn-success btn-icon-split">
             <span class="icon text-white-50">
                 <i class="fas fa-plus"></i>

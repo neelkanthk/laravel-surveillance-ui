@@ -22,7 +22,7 @@
                     <div class="input-group-prepend">
                         <label class="input-group-text" for="log_id">{{ __('surveillance-ui::app.logs.fields.id') }}</label>
                     </div>
-                    <input type="text" class="form-control" id="log_id" placeholder="">
+                    <input value="{{ $data['id'] }}" type="text" class="form-control" id="log_id" placeholder="">
                 </div>
             </div>
             <div class="form-group">
@@ -30,7 +30,7 @@
                     <div class="input-group-prepend">
                         <label class="input-group-text" for="log_fingerprint">{{ __('surveillance-ui::app.logs.fields.fingerprint') }}</label>
                     </div>
-                    <input type="text" class="form-control" id="log_fingerprint" placeholder="">
+                    <input value="{{ $data['fingerprint'] }}" type="text" class="form-control" id="log_fingerprint" placeholder="">
                 </div>
             </div>
             <div class="form-group">
@@ -38,7 +38,7 @@
                     <div class="input-group-prepend">
                         <label class="input-group-text" for="log_userid">{{ __('surveillance-ui::app.logs.fields.userid') }}</label>
                     </div>
-                    <input type="text" class="form-control" id="log_userid" placeholder="">
+                    <input value="{{ $data['userid'] }}" type="text" class="form-control" id="log_userid" placeholder="">
                 </div>
             </div>
             <div class="form-group">
@@ -46,7 +46,7 @@
                     <div class="input-group-prepend">
                         <label class="input-group-text" for="log_ip">{{ __('surveillance-ui::app.logs.fields.ip') }}</label>
                     </div>
-                    <input type="text" class="form-control" id="log_ip" placeholder="">
+                    <input value="{{ $data['ip'] }}" type="text" class="form-control" id="log_ip" placeholder="">
                 </div>
             </div>
             <div class="form-group">
@@ -54,7 +54,7 @@
                     <div class="input-group-prepend">
                         <label class="input-group-text" for="log_url">{{ __('surveillance-ui::app.logs.fields.url') }}</label>
                     </div>
-                    <input type="text" class="form-control" id="log_url" placeholder="">
+                    <input value="{{ $data['url'] }}" type="text" class="form-control" id="log_url" placeholder="">
                 </div>
             </div>
             <div class="form-group">
@@ -62,7 +62,7 @@
                     <div class="input-group-prepend">
                         <label class="input-group-text" for="log_useragent">{{ __('surveillance-ui::app.logs.fields.user_agent') }}</label>
                     </div>
-                    <input type="text" class="form-control" id="log_useragent" placeholder="">
+                    <input value="{{ $data['user_agent'] }}" type="text" class="form-control" id="log_useragent" placeholder="">
                 </div>
             </div>
             <div class="form-group">
@@ -70,7 +70,7 @@
                     <div class="input-group-prepend">
                         <label class="input-group-text" for="log_cookies">{{ __('surveillance-ui::app.logs.fields.cookies') }}</label>
                     </div>
-                    <input type="text" class="form-control" id="log_cookies" placeholder="">
+                    <input value="{{ $data['cookies'] }}" type="text" class="form-control" id="log_cookies" placeholder="">
                 </div>
             </div>
             <div class="form-group">
@@ -78,7 +78,7 @@
                     <div class="input-group-prepend">
                         <label class="input-group-text" for="log_session">{{ __('surveillance-ui::app.logs.fields.session') }}</label>
                     </div>
-                    <input type="text" class="form-control" id="log_session" placeholder="">
+                    <input value="{{ $data['session'] }}" type="text" class="form-control" id="log_session" placeholder="">
                 </div>
             </div>
             <div class="form-group">
@@ -86,26 +86,26 @@
                     <div class="input-group-prepend">
                         <label class="input-group-text" for="log_files">{{ __('surveillance-ui::app.logs.fields.files') }}</label>
                     </div>
-                    <input type="text" class="form-control" id="log_files" placeholder="">
+                    <input value="{{ $data['files'] }}" type="text" class="form-control" id="log_files" placeholder="">
                 </div>
             </div>
             <div class="form-group">
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
-                        <label class="input-group-text" for="created_at">{{ __('surveillance-ui::app.logs.fields.created_at') }}</label>
+                        <label class="input-group-text" for="log_created_at">{{ __('surveillance-ui::app.logs.fields.created_at') }}</label>
                     </div>
-                    <input type="text" class="form-control" id="created_at" placeholder="">
+                    <input value="{{ $data['created_at'] }}" type="text" class="form-control" id="log_created_at" placeholder="">
                 </div>
             </div>
             <div class="form-group">
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
-                        <label class="input-group-text" for="updated_at">{{ __('surveillance-ui::app.logs.fields.updated_at') }}</label>
+                        <label class="input-group-text" for="log_updated_at">{{ __('surveillance-ui::app.logs.fields.updated_at') }}</label>
                     </div>
-                    <input type="text" class="form-control" id="updated_at" placeholder="">
+                    <input value="{{ $data['updated_at'] }}" type="text" class="form-control" id="log_updated_at" placeholder="">
                 </div>
             </div>
-            <a href="#" class="btn btn-success btn-icon-split">
+            <a href="{{ route('surveillance-ui.logs.index') }}" class="btn btn-success btn-icon-split">
                 <span class="icon text-white-50">
                     <i class="fas fa-check"></i>
                 </span>

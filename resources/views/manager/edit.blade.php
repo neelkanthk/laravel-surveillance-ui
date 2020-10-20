@@ -20,15 +20,7 @@
             <form id="surveillance-ui-edit-form" method="POST" action="{{ route('surveillance-ui.manager.update',2) }}">
                 @csrf
                 @method('PATCH')
-                @if(session()->has('flash_message'))
-                <div class="alert alert-info alert-dismissible fade show" role="alert">
-                    <i class="fas fa-info-circle"></i>
-                    {{ session()->get('flash_message') }}
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                @endif
+                @include('surveillance-ui::manager.partials.flash_alert')
                 <div class="form-group">
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
