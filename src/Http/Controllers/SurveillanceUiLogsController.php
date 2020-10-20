@@ -79,11 +79,7 @@ class SurveillanceUiLogsController extends SurveillanceUiController
             $data = __('surveillance-ui::app.alerts.generic_error');
             $code = 500;
         } finally {
-            if (request()->ajax()) {
-                return response()->json(["data" => $data], $code);
-            } else {
-                return view('surveillance-ui::logs.show', compact("data"));
-            }
+            return view('surveillance-ui::logs.show', compact("data"));
         }
     }
 
