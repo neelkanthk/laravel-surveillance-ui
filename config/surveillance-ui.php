@@ -13,9 +13,9 @@ return [
     "middleware" => ["web"],
 
     /**
-     * Package Name
+     * App name
      */
-    "app_name" => 'Laravel Surveillance<sup>UI</sup>',
+    "app_name" => 'Laravel Surveillance<sup>GUI</sup>',
 
     /**
      * Sidebar color bootstrap class

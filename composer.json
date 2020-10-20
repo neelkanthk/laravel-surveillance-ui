@@ -1,6 +1,6 @@
 {
     "name": "neelkanthk/laravel-surveillance-ui",
-    "description": "A companion package to provide UI interface for Laravel Surveillance Package.",
+    "description": "Laravel Surveillance GUI provides a web based interface for Laravel Surveillance package.",
     "type": "laravel-package",
     "license": "MIT",
     "authors": [
