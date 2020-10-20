@@ -22,7 +22,7 @@ $app = [
         'update' => 'Update Status',
         'detail' => 'Surveillance Detail',
         'save' => "Save",
-        'delete' => "Remove",
+        'delete' => "Delete",
         'actions' => 'Actions',
         'fields' => [
             'id' => "Surveillance ID",
@@ -57,12 +57,13 @@ $app = [
         'page_heading' => 'Surveillance Logs',
         'detail' => 'Detail',
         'cancel' => "Cancel",
+        'delete' => "Delete",
         'actions' => 'Actions',
         'fields' => [
             'id' => "Log ID",
             'ip' => "IP Address",
             'userid' => "User ID",
-            'fingerprint' => "Browser Fingerprint",
+            'fingerprint' => "Fingerprint",
             'url' => "Visited URL",
             'user_agent' => "User Agent",
             'cookies' => "Cookies",
@@ -70,6 +71,9 @@ $app = [
             'files' => "Files",
             'created_at' => "Created at",
             'updated_at' => "Updated at"
+        ],
+        'filters' => [
+            'date_range' => 'Filter by date and time range'
         ]
     ],
     'alerts' => [
@@ -84,6 +88,7 @@ $app = [
         'access_unblock_success' => 'Access unblocked',
         'access_unblock_error' => 'Some error occured during unblocking access.',
         'record_delete_success' => "Surveillance record has been deleted.",
+        'log_delete_success' => "Surveillance log has been deleted.",
         'generic_error' => 'Some error occured.',
         'not_found' => 'Data not found.'
     ]

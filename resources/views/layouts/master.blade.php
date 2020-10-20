@@ -10,7 +10,7 @@
     <!-- Custom fonts for this template-->
     <link href="{{ asset('surveillance-ui/css/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
-
+    <link rel="stylesheet" type="text/css" href="{{ asset('surveillance-ui/css/daterangepicker.css') }}" />
     <!-- sbadmin styles for this template-->
     <link href="{{ asset('surveillance-ui/css/sb-admin-2.min.css') }}" rel="stylesheet">
 
@@ -18,7 +18,7 @@
     @stack('view-styles')
 
     <!-- custom styles for this template-->
-    <link href="{{ asset('surveillance-ui/css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('surveillance-ui/css/app.min.css') }}" rel="stylesheet">
 </head>
 
 <body id="page-top">
@@ -39,7 +39,7 @@
                 <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
-                    @yield('content')
+                @yield('content')
                 <!-- End Page Content -->
 
             </div>
@@ -62,6 +62,8 @@
     <!-- Bootstrap core JavaScript-->
     <script src="{{ asset('surveillance-ui/js/jquery/jquery.min.js') }}"></script>
     <script src="{{ asset('surveillance-ui/js/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('surveillance-ui/js/moment.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('surveillance-ui/js/daterangepicker.min.js') }}"></script>
 
     <!-- sbadmin scripts for all pages-->
     <script src="{{ asset('surveillance-ui/js/sb-admin-2.min.js') }}"></script>
@@ -70,7 +72,7 @@
     @stack('view-scripts')
 
     <!-- custom scripts for all pages-->
-    <script src="{{ asset('surveillance-ui/js/app.js') }}"></script>
+    <script src="{{ asset('surveillance-ui/js/app.min.js') }}"></script>
 </body>
 
 </html>

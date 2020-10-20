@@ -7,13 +7,13 @@ use Neelkanth\Laravel\SurveillanceUi\Http\Controllers\SurveillanceUiLogsControll
 
 Route::get('/dashboard', [SurveillanceUiDashboardController::class, 'index'])->name('surveillance-ui.dashboard.index');
 
-Route::get('/manager', [SurveillanceUiManagerController::class, 'index'])->name('surveillance-ui.manager.index');
-Route::get('/manager/create', [SurveillanceUiManagerController::class, 'create'])->name('surveillance-ui.manager.create');
-Route::post('/manager', [SurveillanceUiManagerController::class, 'store'])->name('surveillance-ui.manager.store');
-Route::get('/manager/{manager}', [SurveillanceUiManagerController::class, 'show'])->name('surveillance-ui.manager.show');
-Route::get('/manager/{manager}/edit', [SurveillanceUiManagerController::class, 'edit'])->name('surveillance-ui.manager.edit');
-Route::patch('/manager/{manager}', [SurveillanceUiManagerController::class, 'update'])->name('surveillance-ui.manager.update');
-Route::delete('/manager/{manager}', [SurveillanceUiManagerController::class, 'destroy'])->name('surveillance-ui.manager.destroy');
+Route::get('/manager', [SurveillanceUiManagerController::class, 'index'])->name('surveillance-ui.manager.index')->middleware(['surveillance']);
+Route::get('/manager/create', [SurveillanceUiManagerController::class, 'create'])->name('surveillance-ui.manager.create')->middleware(['surveillance']);
+Route::post('/manager', [SurveillanceUiManagerController::class, 'store'])->name('surveillance-ui.manager.store')->middleware(['surveillance']);
+Route::get('/manager/{manager}', [SurveillanceUiManagerController::class, 'show'])->name('surveillance-ui.manager.show')->middleware(['surveillance']);
+Route::get('/manager/{manager}/edit', [SurveillanceUiManagerController::class, 'edit'])->name('surveillance-ui.manager.edit')->middleware(['surveillance']);
+Route::patch('/manager/{manager}', [SurveillanceUiManagerController::class, 'update'])->name('surveillance-ui.manager.update')->middleware(['surveillance']);
+Route::delete('/manager/{manager}', [SurveillanceUiManagerController::class, 'destroy'])->name('surveillance-ui.manager.destroy')->middleware(['surveillance']);
 
 Route::get('/logs', [SurveillanceUiLogsController::class, 'index'])->name('surveillance-ui.logs.index');
 Route::get('/logs/create', [SurveillanceUiLogsController::class, 'create'])->name('surveillance-ui.logs.create');

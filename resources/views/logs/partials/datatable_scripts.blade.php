@@ -1,6 +1,6 @@
 <script>
     $(document).ready(function() {
-        var surveillance_manager_dt = $('#logs_listing').DataTable({
+        var surveillance_logs_dt = $('#logs_listing').DataTable({
             processing: true,
             serverSide: true,
             orderable: false,
@@ -14,8 +14,7 @@
             ajax: {
                 url: "{{ route('surveillance-ui.logs.index') }}",
                 data: function(filters) {
-                    filters.type = $("#filter_surveillance_type").val();
-                    filters.status = $("#filter_surveillance_status").val();
+                    filters.type = $("#filter_datetime_range").val();
                 }
             },
             columns: [{
@@ -59,44 +58,9 @@
             }
         });
 
-        $("#filter_surveillance_type, #filter_surveillance_status").change(function(e) {
-            surveillance_manager_dt.ajax.reload();
+        $('#filter_datetime_range').on('apply.daterangepicker', function(ev, picker) {
+            $(this).val(picker.startDate.format('YYYY-MM-DD HH:mm:ss') + ' - ' + picker.endDate.format('YYYY-MM-DD HH:mm:ss'));
+            surveillance_logs_dt.ajax.reload();
         });
-
-        $('.deleteManagerModal').on('show.bs.modal', function(e) {
-            var invoker = $(e.relatedTarget);
-            $("#delete-surveillance-manager-form").attr('action', invoker.attr('data-url'));
-        });
-
-        $('.showManagerDetailModal').on('show.bs.modal', function(e) {
-            var invoker = $(e.relatedTarget);
-            var endpoint = invoker.attr('data-url');
-            $.ajax({
-                url: endpoint,
-                type: "GET",
-                beforeSend: function() {
-                    $('#surveillanceManagerDetailForm').addClass('d-none');
-                    $('.showManagerDetailModal #spinner').removeClass('d-none');
-                },
-                success: function(result) {
-                    $('#surveillanceManagerDetailForm').removeClass('d-none');
-                    var form = $("#surveillanceManagerDetailForm");
-                    var i;
-                    var data = result.data;
-                    for (key in data) {
-                        form.find('#' + key).val((data[key]) ? data[key] : 'NULL');
-                    }
-                },
-                error: function(xhr, error) {
-                    var obj = xhr.responseJSON;
-                    $('.showManagerDetailModal #errorMessage').html(obj.data);
-                    $('.showManagerDetailModal #error-alert-box').removeClass('d-none');
-                },
-                complete: function() {
-                    $('.showManagerDetailModal #spinner').addClass('d-none');
-                }
-            });
-        });
-
     });
 </script>

@@ -16,25 +16,29 @@ class SurveillanceUiLogsController extends SurveillanceUiController
      */
     public function index()
     {
-        if (request()->ajax()) {
-            $filters = request()->only("type", "status", "draw");
-            $filters["limit"] = request()->get("length");
-            $filters["search"] = request()->get("search");
-            $filters["search"] = $filters["search"]["value"];
-            $filters["page"] = request()->get("start") == 0 ? 1 : ((int) request()->get("start") / $filters["limit"]) + 1;
-            $logs = Surveillance::logger()->getPaginatedAndFilteredLogs($filters);
-            $data = array();
-            if (!empty($logs["data"])) {
-                $data = $this->dataTableRows($logs["data"]);
+        try {
+            if (request()->ajax()) {
+                $filters = request()->only("draw");
+                $filters["limit"] = request()->get("length");
+                $filters["search"] = request()->get("search");
+                $filters["search"] = $filters["search"]["value"];
+                $filters["page"] = request()->get("start") == 0 ? 1 : ((int) request()->get("start") / $filters["limit"]) + 1;
+                $logs = Surveillance::logger()->getPaginatedAndFilteredLogs($filters);
+                $data = array();
+                if (!empty($logs["data"])) {
+                    $data = $this->dataTableRows($logs["data"]);
+                }
+                return [
+                    "draw" => $filters["draw"],
+                    "recordsFiltered" => $logs["total"],
+                    "recordsTotal" => Surveillance::logger()->totalLogs(),
+                    "data" => $data
+                ];
+            } else {
+                return view('surveillance-ui::logs.index');
             }
-            return [
-                "draw" => $filters["draw"],
-                "recordsFiltered" => $logs["total"],
-                "recordsTotal" => Surveillance::logger()->totalLogs(),
-                "data" => $data
-            ];
-        } else {
-            return view('surveillance-ui::logs.index');
+        } catch (Exception $ex) {
+            dd($ex->getMessage());
         }
     }
 
@@ -50,7 +54,7 @@ class SurveillanceUiLogsController extends SurveillanceUiController
                 "ip" => !empty($log["ip"]) ? $log["ip"] : "-",
                 "userid" => !empty($log["userid"]) ? $log["userid"] : "-",
                 "fingerprint" => !empty($log["fingerprint"]) ? $log["fingerprint"] : "-",
-                "url" => !empty($log["url"]) ? $log["url"] : "-",
+                "url" => !empty($log["url"]) ? substr($log["url"], 0, 45) . '...' : "-",
                 "created_at" => $log["created_at"],
                 "actions" => view('surveillance-ui::logs.partials.actions', ['id' => $log["id"]])->render()
             ]);
@@ -91,6 +95,13 @@ class SurveillanceUiLogsController extends SurveillanceUiController
      */
     public function destroy($id)
     {
-        //
+        try {
+            Surveillance::logger()->deleteLogById($id);
+            request()->session()->flash('flash_message', __('surveillance-ui::app.alerts.log_delete_success'));
+        } catch (Exception $ex) {
+            request()->session()->flash('flash_message', __('surveillance-ui::app.alerts.generic_error'));
+        } finally {
+            return redirect()->route('surveillance-ui.logs.index');
+        }
     }
 }

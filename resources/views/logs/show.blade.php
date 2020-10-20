@@ -54,7 +54,7 @@
                     <div class="input-group-prepend">
                         <label class="input-group-text" for="log_url">{{ __('surveillance-ui::app.logs.fields.url') }}</label>
                     </div>
-                    <input value="{{ $data['url'] }}" type="text" class="form-control" id="log_url" placeholder="">
+                    <textarea rows="4" class="form-control" id="log_url" placeholder="">{{ $data['url'] }}</textarea>
                 </div>
             </div>
             <div class="form-group">
@@ -70,7 +70,7 @@
                     <div class="input-group-prepend">
                         <label class="input-group-text" for="log_cookies">{{ __('surveillance-ui::app.logs.fields.cookies') }}</label>
                     </div>
-                    <input value="{{ $data['cookies'] }}" type="text" class="form-control" id="log_cookies" placeholder="">
+                    <textarea rows="2" class="form-control" id="log_cookies" placeholder="">{{ $data['cookies'] }}</textarea>
                 </div>
             </div>
             <div class="form-group">
@@ -78,7 +78,7 @@
                     <div class="input-group-prepend">
                         <label class="input-group-text" for="log_session">{{ __('surveillance-ui::app.logs.fields.session') }}</label>
                     </div>
-                    <input value="{{ $data['session'] }}" type="text" class="form-control" id="log_session" placeholder="">
+                    <textarea rows="2" class="form-control" id="log_session" placeholder="">{{ $data['session'] }}</textarea>
                 </div>
             </div>
             <div class="form-group">
@@ -86,7 +86,7 @@
                     <div class="input-group-prepend">
                         <label class="input-group-text" for="log_files">{{ __('surveillance-ui::app.logs.fields.files') }}</label>
                     </div>
-                    <input value="{{ $data['files'] }}" type="text" class="form-control" id="log_files" placeholder="">
+                    <textarea rows="2" class="form-control" id="log_files" placeholder="">{{ $data['files'] }}</textarea>
                 </div>
             </div>
             <div class="form-group">

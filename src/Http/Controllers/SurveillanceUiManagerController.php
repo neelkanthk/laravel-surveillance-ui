@@ -201,8 +201,13 @@ class SurveillanceUiManagerController extends SurveillanceUiController
      */
     public function destroy($id)
     {
-        Surveillance::manager()->removeRecordById($id);
-        request()->session()->flash('flash_message', __('surveillance-ui::app.alerts.record_delete_success'));
-        return redirect()->route('surveillance-ui.manager.index');
+        try {
+            Surveillance::manager()->removeRecordById($id);
+            request()->session()->flash('flash_message', __('surveillance-ui::app.alerts.record_delete_success'));
+        } catch (Exception $ex) {
+            request()->session()->flash('flash_message', __('surveillance-ui::app.alerts.generic_error'));
+        } finally {
+            return redirect()->route('surveillance-ui.manager.index');
+        }
     }
 }

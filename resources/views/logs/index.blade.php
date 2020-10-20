@@ -8,8 +8,8 @@
 @endpush
 
 @push('view-scripts')
-<script src="{{ asset('surveillance-ui/js/datatable/jquery.dataTables.min.js') }}"></script>
-<script src="{{ asset('surveillance-ui/js/datatable/dataTables.bootstrap4.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('surveillance-ui/js/datatable/jquery.dataTables.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('surveillance-ui/js/datatable/dataTables.bootstrap4.min.js') }}"></script>
 @include('surveillance-ui::logs.partials.datatable_scripts')
 @endpush
 
@@ -30,7 +30,7 @@
         <div class="col-lg-12 mb-6">
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                    <span>Filters</span>
+                    @include('surveillance-ui::logs.partials.filters')
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
@@ -68,4 +68,5 @@
         </div>
     </div>
 </div>
+@include('surveillance-ui::logs.delete')
 @endsection
