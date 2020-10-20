@@ -6,6 +6,7 @@ use Neelkanth\Laravel\SurveillanceUi\Http\Controllers\SurveillanceUiController;
 use Neelkanth\Laravel\SurveillanceUi\Http\Requests\CreateSurveillanceManagerRequest as CreateRequest;
 use Neelkanth\Laravel\SurveillanceUi\Http\Requests\UpdateSurveillanceManagerRequest as UpdateRequest;
 use Neelkanth\Laravel\Surveillance\Services\Surveillance;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Exception;
 
 class SurveillanceUiManagerController extends SurveillanceUiController
@@ -25,13 +26,14 @@ class SurveillanceUiManagerController extends SurveillanceUiController
                 $filters["search"] = $filters["search"]["value"];
                 $filters["page"] = request()->get("start") == 0 ? 1 : ((int) request()->get("start") / $filters["limit"]) + 1;
                 $records = Surveillance::manager()->getPaginatedAndFilteredRecords($filters);
+                $data = array();
                 if (!empty($records["data"])) {
                     $data = $this->dataTableRows($records["data"]);
                 }
                 return [
                     "draw" => $filters["draw"],
                     "recordsFiltered" => $records["total"],
-                    "recordsTotal" => $records["total"],
+                    "recordsTotal" => Surveillance::manager()->totalRecords(),
                     "data" => $data
                 ];
                 return response()->json($records);
@@ -53,8 +55,8 @@ class SurveillanceUiManagerController extends SurveillanceUiController
                 "id" => $record["id"],
                 "type" => trans("surveillance-ui::app.surveillance_types." . $record["type"]),
                 "value" => $record["value"],
-                "status" => view('surveillance-ui::manager.badges', ['surveillance' => $record])->render(),
-                "actions" => view('surveillance-ui::manager.actions', ['id' => $record["id"]])->render()
+                "status" => view('surveillance-ui::manager.partials.badges', ['surveillance' => $record])->render(),
+                "actions" => view('surveillance-ui::manager.partials.actions', ['id' => $record["id"]])->render()
             ]);
         }
         return $data;
@@ -107,6 +109,31 @@ class SurveillanceUiManagerController extends SurveillanceUiController
             $request->session()->flash('flash_message', __('surveillance-ui::app.alerts.generic_error'));
         } finally {
             return redirect()->route('surveillance-ui.manager.create');
+        }
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        $data = null;
+        $code = 404;
+        try {
+            $record = Surveillance::manager()->getRecordById($id);
+            $data = $record;
+            $code = 200;
+        } catch (ModelNotFoundException $ex) {
+            $data = __('surveillance-ui::app.alerts.not_found');
+            $code = 404;
+        } catch (Exception $ex) {
+            $data = __('surveillance-ui::app.alerts.generic_error');
+            $code = 500;
+        } finally {
+            return response()->json(["data" => $data], $code);
         }
     }
 

@@ -6,13 +6,13 @@ $app = [
     'common' => [
         'title_prefix' => 'Laravel Surveillance UI',
         'choose' => "Choose...",
-        'confirmation' => "Confirmation",
+        'delete_confirmation' => "Click 'Delete' to confirm the action.",
         'delete' => "Delete",
         'ok' => "Ok",
         'cancel' => "Cancel"
     ],
     'dashboard' => [
-        'sidebar_title' => 'Dashboard',
+        'sidebar_title' => 'Surveillance Dashboard',
         'page_heading' => 'Surveillance Dashboard'
     ],
     'manager' => [
@@ -20,7 +20,7 @@ $app = [
         'page_heading' => 'Surveillance Manager',
         'create' => 'Create New',
         'update' => 'Update Status',
-        'detail' => 'Detail',
+        'detail' => 'Surveillance Detail',
         'save' => "Save",
         'delete' => "Remove",
         'actions' => 'Actions',
@@ -35,6 +35,10 @@ $app = [
             'access_unblocked_at' => "Access Unblocked at",
             'created_at' => "Created at",
             'updated_at' => "Updated at"
+        ],
+        'filters' => [
+            'type' => 'Filter by Type',
+            'status' => 'Filter by Status'
         ]
     ],
     'surveillance_types' => [
@@ -80,7 +84,8 @@ $app = [
         'access_unblock_success' => 'Access unblocked',
         'access_unblock_error' => 'Some error occured during unblocking access.',
         'record_delete_success' => "Surveillance record has been deleted.",
-        'generic_error' => 'Some error occured.'
+        'generic_error' => 'Some error occured.',
+        'not_found' => 'Data not found.'
     ]
 ];
 

@@ -10,64 +10,7 @@
 @push('view-scripts')
 <script src="{{ asset('surveillance-ui/js/datatable/jquery.dataTables.min.js') }}"></script>
 <script src="{{ asset('surveillance-ui/js/datatable/dataTables.bootstrap4.min.js') }}"></script>
-<script>
-    $(document).ready(function() {
-        var surveillance_manager_dt = $('#manager_listing').DataTable({
-            processing: true,
-            serverSide: true,
-            orderable: false,
-            language: {
-                zeroRecords: "No surveillance records to show."
-            },
-            ajax: {
-                url: "{{ route('surveillance-ui.manager.index') }}",
-                data: function(filters) {
-                    filters.type = $("#filter_surveillance_type").val();
-                    filters.status = $("#filter_surveillance_status").val();
-                }
-            },
-            columns: [{
-                    "data": "id",
-                    orderable: false,
-                    searchable: false
-                },
-                {
-                    "data": "type",
-                    orderable: false,
-                    searchable: false
-                },
-                {
-                    "data": "value",
-                    orderable: false,
-                    searchable: false
-                },
-                {
-                    "data": "status",
-                    orderable: false,
-                    searchable: false
-                },
-                {
-                    "data": "actions",
-                    orderable: false,
-                    searchable: false
-                }
-            ],
-            drawCallback: function(settings) {
-                $(window).scrollTop(0);
-            }
-        });
-
-        $("#filter_surveillance_type, #filter_surveillance_status").change(function(e) {
-            surveillance_manager_dt.ajax.reload();
-        });
-
-        $('.deleteManagerModal').on('show.bs.modal', function(e) {
-            var invoker = $(e.relatedTarget);
-            $("#delete-surveillance-manager-form").attr('action', invoker.attr('data-url'));
-        });
-
-    });
-</script>
+@include('surveillance-ui::manager.partials.datatable_scripts')
 @endpush
 
 @section('sidebar')
@@ -103,7 +46,7 @@
         <div class="col-lg-12 mb-6">
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                    @include('surveillance-ui::manager.filters')
+                    @include('surveillance-ui::manager.partials.filters')
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">

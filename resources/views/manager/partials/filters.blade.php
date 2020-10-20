@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-lg-3 mb-3">
-        <strong>Filter by Type</strong>
+        <strong>{{ __('surveillance-ui::app.manager.filters.type') }}</strong>
         <select name="type" class="custom-select" id="filter_surveillance_type">
             <option value="" selected>{{ __('surveillance-ui::app.common.choose') }}</option>
             <option value="ip">{{ __('surveillance-ui::app.surveillance_types.ip') }}</option>
@@ -9,7 +9,7 @@
         </select>
     </div>
     <div class="col-lg-3 mb-3">
-        <strong>Filter by Status</strong>
+        <strong>{{ __('surveillance-ui::app.manager.filters.status') }}</strong>
         <select name="type" class="custom-select" id="filter_surveillance_status">
             <option value="" selected>{{ __('surveillance-ui::app.common.choose') }}</option>
             <option value="enabled">{{ __('surveillance-ui::app.surveillance_status.enable') }}</option>
@@ -19,7 +19,7 @@
         </select>
     </div>
     <div class="float-right col-lg-3 mb-3">
-
+        <!-- More Filters -->
     </div>
 
 </div>

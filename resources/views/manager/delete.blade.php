@@ -3,7 +3,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="deleteManagerModalHeading">{{ __('surveillance-ui::app.common.confirmation') }}</h5>
+                <h5 class="modal-title" id="deleteManagerModalHeading">{{ __('surveillance-ui::app.common.delete_confirmation') }}</h5>
                 <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span>
                 </button>
