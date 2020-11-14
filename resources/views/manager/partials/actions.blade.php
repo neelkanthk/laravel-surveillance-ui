@@ -1,0 +1,3 @@
+<a title="{{ __('surveillance-ui::app.manager.detail') }}" href="javascript:void(0)" data-url="{{ route('surveillance-ui.manager.show',$id) }}" class="btn btn-secondary btn-sm" data-toggle="modal" data-target=".showManagerDetailModal"><i class="fa fa-eye"></i></a>
+<a title="{{ __('surveillance-ui::app.manager.update') }}" href="{{ route('surveillance-ui.manager.edit',$id) }}" class="btn btn-secondary btn-sm"><i class="fa fa-edit"></i></a>
+<a title="{{ __('surveillance-ui::app.manager.delete') }}" href="javascript:void(0)" data-url="{{ route('surveillance-ui.manager.destroy',$id) }}" class="btn btn-secondary btn-sm" data-toggle="modal" data-target=".deleteManagerModal"><i class="fa fa-trash"></i></a>

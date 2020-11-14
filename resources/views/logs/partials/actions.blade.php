@@ -1,0 +1,2 @@
+<a title="{{ __('surveillance-ui::app.logs.detail') }}" href="{{ route('surveillance-ui.logs.show',$id) }}" class="btn btn-secondary btn-sm"><i class="fa fa-eye"></i></a>
+<a title="{{ __('surveillance-ui::app.logs.delete') }}" href="javascript:void(0)" data-url="{{ route('surveillance-ui.logs.destroy',$id) }}" class="btn btn-secondary btn-sm" data-toggle="modal" data-target=".deleteLogModal"><i class="fa fa-trash"></i></a>
