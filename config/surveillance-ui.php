@@ -25,5 +25,5 @@ return [
     /**
      * Github repo URL
      */
-    "github" => 'https://github.com/neelkanthk/laravel-surveillance'
+    "github" => 'https://github.com/neelkanthk/laravel-surveillance-ui'
 ];

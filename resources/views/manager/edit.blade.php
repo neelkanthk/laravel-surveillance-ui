@@ -17,7 +17,7 @@
     <div class="row">
         <!-- Content Column -->
         <div class="col-lg-6 mb-4">
-            <form id="surveillance-ui-edit-form" method="POST" action="{{ route('surveillance-ui.manager.update',2) }}">
+            <form id="surveillance-ui-edit-form" method="POST" action="{{ route('surveillance-ui.manager.update',$surveillanceRecord->id) }}">
                 @csrf
                 @method('PATCH')
                 @include('surveillance-ui::manager.partials.flash_alert')
