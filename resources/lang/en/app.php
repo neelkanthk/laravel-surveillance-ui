@@ -5,7 +5,7 @@ use function PHPSTORM_META\map;
 $app = [
     'common' => [
         'title_prefix' => 'Laravel Surveillance UI',
-        'choose' => "Choose...",
+        'choose' => "--Select--",
         'delete_confirmation' => "Click 'Delete' to confirm the action.",
         'delete' => "Delete",
         'ok' => "Ok",

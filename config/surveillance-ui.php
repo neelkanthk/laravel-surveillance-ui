@@ -15,7 +15,7 @@ return [
     /**
      * App name
      */
-    "app_name" => 'Laravel Surveillance<sup>GUI</sup>',
+    "app_name" => 'Laravel Surveillance<sup>UI</sup>',
 
     /**
      * Sidebar color bootstrap class
