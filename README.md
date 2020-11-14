@@ -95,7 +95,8 @@ The **Laravel Surveillance UI logs dashboard** can be accessed at: http://your.d
 ### Customizing the route prefix
 
 By default ```surveillance/ui``` route prefix is appended to the package's routes.
-If you want to customize it then you can do so easily in the ```config/surveillance-ui.php``` file's file's _**prefix**_ key as shown below.
+
+If you want to customize it then you can do so easily in the ```config/surveillance-ui.php``` file's _**prefix**_ key as shown below.
 
 ```php
 /**
@@ -106,7 +107,9 @@ If you want to customize it then you can do so easily in the ```config/surveilla
 
 ### Customizing the route middleware
 
-By default ```web``` middleware is added to the package's routes. If you want to add more middlewares like ```auth``` or something else, then you can add them easily in the ```config/surveillance-ui.php``` file's _**middleware**_ key as shown below.
+By default ```web``` middleware is added to the package's routes. 
+
+If you want to add more middlewares like ```auth``` or something else, then you can add them easily in the ```config/surveillance-ui.php``` file's _**middleware**_ key as shown below.
 
 ```php
 /**
