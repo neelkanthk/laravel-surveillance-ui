@@ -94,7 +94,7 @@ The **Laravel Surveillance UI manager dashboard** can be accessed at: http://you
 
 The **Laravel Surveillance UI logs dashboard** can be accessed at: http://your.domain/surveillance/ui/logs
 
-## Customizing the package routes
+## Overriding and customizing the package default configuration
 
 ### Customizing the route prefix
 
@@ -121,6 +121,19 @@ If you want to add more middlewares like ```auth``` or something else, then you 
  */
 "middleware" => ["web", "auth"], //auth middleware added
 ```
+
+### Customizing the views
+
+After publishing the package views you can change the design as per your taste.
+The views are published inside your project's ```resources/views/vendor/surveillance-ui``` directory.
+
+### Customizing the JS and CSS
+
+After publishing the package assets you can tweak the JS and CSS inside your project's ```public/surveillance-ui``` directory.
+
+### Replacing the default logo
+
+You can change the default CCTV logo and favicon displayed on the Surveillance Dashboard by replacing them with your own at ```public/surveillance-ui/images/logo.png``` and ```public/surveillance-ui/images/favicon.ico```.
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
