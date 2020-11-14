@@ -17,7 +17,7 @@ Laravel Surveillance is a package to put malicious users, IP addresses and anony
 
 ## Laravel Surveillance UI Demo
 
-[![](https://i.ytimg.com/vi/G0foqT7WPeA/mqdefault.jpg)](https://www.youtube.com/watch?v=G0foqT7WPeA)
+[![](https://raw.githubusercontent.com/neelkanthk/repo_logos/master/LaravelSurveillanceUi-DemoImg.jpg)](https://www.youtube.com/watch?v=G0foqT7WPeA)
 
 ## Minimum Requirements
 
