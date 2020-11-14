@@ -13,7 +13,7 @@
     "require": {
         "php": ">=7.2",
         "laravel/framework": ">=6.0",
-        "neelkanthk/laravel-surveillance": "^1.2"
+        "neelkanthk/laravel-surveillance": "^1.3"
     },
     "autoload": {
         "psr-4": {
