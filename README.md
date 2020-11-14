@@ -15,6 +15,10 @@ Provides a Graphical UI for [Laravel Surveillance](https://github.com/neelkanthk
 
 Laravel Surveillance is a package to put malicious users, IP addresses and anonymous browser fingerprints under surveillance, write surveillance logs and block malicious ones from accessing the app. [Read more](https://github.com/neelkanthk/laravel-surveillance#laravel-surveillance-)
 
+## Laravel Surveillance UI Demo
+
+[![](https://i.ytimg.com/vi/G0foqT7WPeA/mqdefault.jpg)](https://www.youtube.com/watch?v=G0foqT7WPeA)
+
 ## Minimum Requirements
 
 1. Laravel 6.0  
